@@ -1,0 +1,31 @@
+module tb_Sequence_Detector_Moore();
+reg clk;
+reg reset;
+reg din;
+wire dout;
+
+Sequence_Detector_Moore abc(clk,reset,din,dout);
+initial begin
+ clk = 0;
+ 
+forever #5 clk = ~clk;
+end
+
+initial begin
+reset = 1; 
+din = 0;
+#10 reset = 0;
+#10 din = 1; 
+#10 din = 0; 
+#10 din = 1; 
+#10 din = 1; 
+
+#10 $finish;
+end
+
+initial 
+begin
+$monitor("At time %t: din = %b, dout = %b", $time, din, dout);
+end
+
+endmodule

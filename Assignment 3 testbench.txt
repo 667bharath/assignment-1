@@ -1,0 +1,14 @@
+module tb_multiplier_3x3;
+reg [2:0] a, b;
+wire [5:0] product;
+multiplier_3x3 mul(a,b,product);
+initial begin
+a = 3'b001; b = 3'b010;
+#10 $display("a = %b, b = %b, product = %b", a, b, product);
+a = 3'b011; b = 3'b101;
+#10 $display("a = %b, b = %b, product = %b", a, b, product);
+a = 3'b111; b = 3'b111;
+#10 $display("a = %b, b = %b, product = %b", a, b, product);
+$finish;
+end
+endmodule
